@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import HeaderStudent from "./HeaderStudent"
+import HeaderStudent from "./HeaderStudent";
+import FooterStudent from "./FooterStudent";
 // import { push } from "connected-react-router";
 // import * as actions from "../../store/actions";
 
@@ -32,7 +33,11 @@ class HomePageStudent extends Component {
     // };
     render() {
         return (
-            <HeaderStudent user={this.state.user} />
+            <>
+                <HeaderStudent user={this.state.user} />
+                <div> HOME </div>
+                <FooterStudent />
+            </>
         );
     }
 }
