@@ -1,10 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const passport = require("passport");
 const initWebRoutes = require("./routes/web");
 const cookieSession = require("cookie-session");
-const passportStrategy = require("./passport");
 
 import connectDB from "./config/connectDB";
 import bodyParser from "body-parser";
@@ -18,8 +16,8 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 app.use(
   cors({
