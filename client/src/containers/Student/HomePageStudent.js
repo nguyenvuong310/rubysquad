@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import HeaderStudent from "./HeaderStudent";
 import FooterStudent from "./FooterStudent";
+import "./HomePageStudent.scss"
 // import { push } from "connected-react-router";
 // import * as actions from "../../store/actions";
 
@@ -35,7 +36,7 @@ class HomePageStudent extends Component {
         return (
             <>
                 <HeaderStudent user={this.state.user} />
-                <div> HOME </div>
+                <div className="container-register">HOME</div>
                 <FooterStudent />
             </>
         );
