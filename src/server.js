@@ -4,7 +4,7 @@ const cors = require("cors");
 const initWebRoutes = require("./routes/web");
 const cookieSession = require("cookie-session");
 
-import connectDB from "./config/connectDB";
+import createTable from "./Database/function/createTable";
 import bodyParser from "body-parser";
 const app = express();
 
@@ -30,7 +30,7 @@ app.use(
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 initWebRoutes(app);
-connectDB();
+createTable();
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listenting on port ${port}...`));
