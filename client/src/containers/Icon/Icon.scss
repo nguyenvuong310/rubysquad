@@ -1,0 +1,65 @@
+.support1 {
+  position: fixed;
+  width: 100px;
+  bottom: 90px;
+  right: 170px;
+  text-align: right;
+  .visible-desktop-upload {
+    cursor: pointer;
+    img {
+      vertical-align: middle;
+      border-style: none;
+      height: 65px;
+      width: 65px;
+      margin-bottom: 20px;
+      margin-left: 165px;
+    }
+  }
+  .visible-desktop-print {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    .opt {
+      width: 200px;
+      height: 0;
+      display: none;
+      position: absolute;
+      right: -61px;
+      &.show {
+        height: auto;
+        overflow: visible;
+        border: 1px solid black;
+        border-radius: 8px;
+        display: block;
+        background-color: beige;
+      }
+      .txt {
+        font-size: 20px;
+        /* padding: 5px; */
+        padding-top: 13px;
+        padding-right: 10px;
+        &:hover {
+          background-color: #0f6cbf;
+          color: white;
+        }
+      }
+    }
+
+    .iconPrint {
+      img {
+        height: 65px;
+      }
+      vertical-align: middle;
+      border-style: none;
+
+      margin-bottom: 20px;
+      margin-left: 160px;
+      // &:hover {
+      //   border: 1px solid red;
+      // }
+      // &:hover + .opt {
+      //   display: block !important;
+      // }
+    }
+  }
+}
