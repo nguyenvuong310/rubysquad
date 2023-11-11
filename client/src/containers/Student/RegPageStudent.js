@@ -7,7 +7,7 @@ import "./RegPageStudent.scss"
 // import { push } from "connected-react-router";
 // import * as actions from "../../store/actions";
 
-class HomePageStudent extends Component {
+class RegPageStudent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -58,8 +58,10 @@ class HomePageStudent extends Component {
                                                 <td>1</td>
                                                 <td>2023-2024</td>
                                                 <td style={{ color: 'blue' }}>HK_HK232_3</td>
-                                                <td>Kiểm tra <strong style={{ color: 'red' }}>Kết quả</strong> đăng ký và đăng ký bổ sung môn học HK2/2023-2024 (Đợt 3)- <strong style={{ color: 'red' }}>Kết quả</strong> đợt 2
-                                                </td>
+                                                <a href="regpage-form" className="regpage-form-deco">
+                                                    <td>Kiểm tra <strong style={{ color: 'red' }}>Kết quả</strong> đăng ký và đăng ký bổ sung môn học HK2/2023-2024 (Đợt 3)- <strong style={{ color: 'red' }}>Kết quả</strong> đợt 2
+                                                    </td>
+                                                </a>
                                             </tr>
                                             <tr style={{ cursor: 'pointer' }}>
                                                 <td>2</td>
@@ -154,7 +156,7 @@ class HomePageStudent extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
                 <FooterStudent />
             </>
         );
@@ -171,4 +173,4 @@ const mapDispatchToProps = (dispatch) => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePageStudent);
+export default connect(mapStateToProps, mapDispatchToProps)(RegPageStudent);

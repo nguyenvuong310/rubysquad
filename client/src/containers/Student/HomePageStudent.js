@@ -35,7 +35,7 @@ class HomePageStudent extends Component {
     // };
     render() {
         return (
-            <>
+            <React.Fragment>
                 <HeaderStudent user={this.state.user} />
                 <div className="container-register">
                     <div className="container-register-header">
@@ -60,7 +60,7 @@ class HomePageStudent extends Component {
                     </div>
                 </div>
                 <FooterStudent />
-            </>
+            </React.Fragment>
         );
     }
 }

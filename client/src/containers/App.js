@@ -23,6 +23,7 @@ import ConfirmModal from "../components/ConfirmModal";
 // import HomePage from "./HomePage/HomePage.js";
 
 import CustomScrollbars from "../components/CustomScrollbars";
+import RegPageForm from "./Student/RegPageForm";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -65,7 +66,7 @@ class App extends Component {
                     component={HomePageStudent}
                   />
                   <Route path={path.REGPAGESTUDENT} component={RegPageStudent} />
-
+                  <Route path={path.REGPAGEFORM} component={RegPageForm} />
                   {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
                 </Switch>
               </CustomScrollbars>
