@@ -29,6 +29,10 @@
     }
 
     .Header-navbar-left {
+        .Nav-home:hover {
+            background-color: #337ab7;
+            transition: 0.7s;
+        }
 
         .Nav-home {
             height: 50px;
@@ -37,7 +41,6 @@
             line-height: 20px;
             text-decoration: none;
             color: white;
-            background-color: #337ab7;
 
             .Nav-home-content {
                 margin-left: -7px;

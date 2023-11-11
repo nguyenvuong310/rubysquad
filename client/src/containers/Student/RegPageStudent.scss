@@ -15,7 +15,7 @@
             }
         }
 
-        .regpage-content{
+        .regpage-content {
             min-height: 250px;
             padding: 15px;
             margin-right: auto;
@@ -23,7 +23,7 @@
             padding-left: 15px;
             padding-right: 15px;
 
-            .regpage-table{
+            .regpage-table {
                 width: 100%;
                 border: 1px solid #3c8dbc;
                 position: relative;
@@ -31,13 +31,13 @@
                 margin-bottom: 20px;
                 background-color: #fff;
 
-                .regpage-table-header{
+                .regpage-table-header {
                     display: block;
                     padding: 10px;
                     position: relative;
                     background-color: #3c8dbc;
 
-                    .regpage-table-header-content{
+                    .regpage-table-header-content {
                         display: inline-block;
                         font-size: 16px;
                         color: #fff;
@@ -46,15 +46,17 @@
             }
         }
 
-        .regpage-bottom-wrapper{
+        .regpage-bottom-wrapper {
             margin-bottom: 15px;
             margin-left: 15px;
             margin-right: 15px;
-            
-            .regpage-bottom-container{
+
+            .regpage-bottom-container {
                 text-align: right;
+
                 .button-design {
                     font-size: 14px;
+                    cursor: grab;
                 }
 
             }
