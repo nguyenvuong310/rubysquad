@@ -46,6 +46,9 @@
                 }
 
                 .regpage-table-content {
+                    .regpage-form-deco {
+                        color: #343a40;
+                    }
 
                     .regpage-form-deco:link,
                     regpage-form-deco:visited {
@@ -68,6 +71,7 @@
                 .button-design {
                     font-size: 14px;
                     cursor: grab;
+                    color: #3c8dbc;
                 }
 
             }
