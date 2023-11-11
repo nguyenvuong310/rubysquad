@@ -6,6 +6,7 @@ export const path = {
   HOMEPAGE: "/home",
   HOMEPAGESTUDENT: "/homepage-student",
   HOMEPAGEADMIN: "/homepage-admin",
+  REGPAGESTUDENT: "/regpage-student"
 };
 
 export const LANGUAGES = {

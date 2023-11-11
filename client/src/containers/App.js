@@ -5,6 +5,7 @@ import { ConnectedRouter as Router } from "connected-react-router";
 import { history } from "../redux";
 import { ToastContainer } from "react-toastify";
 import HomePageStudent from "../containers/Student/HomePageStudent"
+import RegPageStudent from "../containers/Student/RegPageStudent";
 import {
   userIsAuthenticated,
   userIsNotAuthenticated,
@@ -47,7 +48,7 @@ class App extends Component {
         <Router history={history}>
           <div className="main-container">
             <div className="content-container">
-              <CustomScrollbars style={{ height: "110vh", width: "100%" }}>
+              <CustomScrollbars style={{ height: "100vh", width: "100%" }}>
                 <Switch>
                   <Route path={path.HOME} exact component={Login} />
                   {/* <Route
@@ -63,7 +64,7 @@ class App extends Component {
                     path={path.HOMEPAGESTUDENT}
                     component={HomePageStudent}
                   />
-                  {/* <Route path={path.HOMEPAGEADMIN} component={HomePageAdmin} /> */}
+                  <Route path={path.REGPAGESTUDENT} component={RegPageStudent} />
 
                   {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
                 </Switch>

@@ -44,7 +44,7 @@ class HeaderStudent extends Component {
                         </div>
                         <div className="Nav-res">
                             <i class="fa fa-book" aria-hidden="true"></i>
-                            <a href="homepage-student" class="Nav-res-content"> &nbsp; Đăng ký môn học</a>
+                            <a href="regpage-student" class="Nav-res-content"> &nbsp; Đăng ký môn học</a>
                         </div>
                     </div>
                     <div className="Header-navbar-right">
