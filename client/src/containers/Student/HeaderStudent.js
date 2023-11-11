@@ -54,7 +54,7 @@ class HeaderStudent extends Component {
                         </div>
                         <div className="Nav-tutorial">
                             <i class="fa fa-question-circle"></i>
-                            <a href="https://wiki.hcmut.edu.vn/wiki/index.php/Trang_Ch%C3%ADnh" class="Nav-tutorial-content"> &nbsp; Hướng dẫn sử dụng</a>
+                            <a href="https://wiki.hcmut.edu.vn/wiki/index.php/Trang_Ch%C3%ADnh" class="Nav-tutorial-content" target="_blank"> &nbsp; Hướng dẫn sử dụng</a>
                         </div>
                         <div className="Nav-log-out">
                             <i class="fas fa-solid fa-arrow-right"></i>
