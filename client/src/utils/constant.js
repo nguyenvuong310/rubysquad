@@ -8,6 +8,8 @@ export const path = {
   HOMEPAGEADMIN: "/homepage-admin",
   HOMEPAGELECTURER: "/homepage-lecturer",
   REGPAGESTUDENT: "/regpage-student",
+  REGPAGESELEC: "/regpage-selec",
+  REGPAGEFORM: "/regpage-form",
 };
 
 export const LANGUAGES = {

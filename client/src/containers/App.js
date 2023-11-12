@@ -23,6 +23,7 @@ import ConfirmModal from "../components/ConfirmModal";
 
 import CustomScrollbars from "../components/CustomScrollbars";
 import RegPageForm from "./Student/RegPageForm";
+import RegPageSelection from "./Student/RegPageSelection";
 class App extends Component {
   handlePersistorState = () => {
     const { persistor } = this.props;
@@ -54,7 +55,7 @@ class App extends Component {
                   <Route
                     path={path.LOGIN}
                     component={userIsNotAuthenticated(Login)}
-                    // component={Login}
+                  // component={Login}
                   />
                   {/* <Route
                     path={path.SYSTEM}
@@ -72,9 +73,9 @@ class App extends Component {
                     path={path.REGPAGESTUDENT}
                     component={userIsAuthenticated(RegPageStudent)}
                   />
-                  {/* <Route path={path.REGPAGEFORM} component={RegPageForm} /> */}
+                  <Route path={path.REGPAGEFORM} component={RegPageForm} />
 
-                  {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
+                  <Route path={path.REGPAGESELEC} component={RegPageSelection} />
                 </Switch>
               </CustomScrollbars>
             </div>

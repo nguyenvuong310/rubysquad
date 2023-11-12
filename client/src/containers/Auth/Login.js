@@ -79,7 +79,7 @@ class Login extends Component {
       this.handleLogin();
     }
   };
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (
