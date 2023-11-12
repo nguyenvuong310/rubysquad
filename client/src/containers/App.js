@@ -73,6 +73,7 @@ class App extends Component {
                     component={userIsAuthenticated(RegPageStudent)}
                   />
                   {/* <Route path={path.REGPAGEFORM} component={RegPageForm} /> */}
+
                   {/* <Route path={path.HOMEPAGE} component={HomePage} /> */}
                 </Switch>
               </CustomScrollbars>

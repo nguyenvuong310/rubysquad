@@ -4,6 +4,7 @@ import axios from "axios";
 import HeaderStudent from "./HeaderStudent";
 import FooterStudent from "./FooterStudent";
 import "./RegPageForm.scss";
+
 // import { push } from "connected-react-router";
 // import * as actions from "../../store/actions";
 
