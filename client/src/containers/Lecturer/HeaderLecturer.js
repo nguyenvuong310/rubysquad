@@ -5,7 +5,7 @@ import "./HeaderStudent.scss";
 import bk_logo from "../../assets/bk_logo.png";
 import * as actions from "../../store/actions";
 
-class HeaderStudent extends Component {
+class HeaderLecturer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,13 +43,6 @@ class HeaderStudent extends Component {
               <a href="homepage-student" class="Nav-home-content">
                 {" "}
                 &nbsp; Trang chủ
-              </a>
-            </div>
-            <div className="Nav-res">
-              <i class="fa fa-book" aria-hidden="true"></i>
-              <a href="regpage-student" class="Nav-res-content">
-                {" "}
-                &nbsp; Đăng ký môn học
               </a>
             </div>
           </div>
@@ -100,4 +93,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderStudent);
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderLecturer);

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import { push } from "connected-react-router";
-// import * as actions from "../../store/actions";
+import { push } from "connected-react-router";
+import * as actions from "../../store/actions";
 import { Link } from "react-router-dom";
 import "./Login.scss";
-import axios from "axios";
+
 import bk_logo from "../../assets/bk_logo.png";
 // import adminService from "../services/adminService";
+import { handleLoginApi } from "../../services/userService";
+import { path } from "../../utils";
 
 class Login extends Component {
   constructor(props) {
@@ -14,81 +16,175 @@ class Login extends Component {
     this.state = {
       userName: "",
       password: "",
-      isShowPassword: false,
       errMessage: "",
     };
   }
-  async componentDidMount() {
-    try {
-      const url = `${process.env.REACT_APP_API_URL}/auth/login/success`;
-      const { data } = await axios.get(url, { withCredentials: true });
-      const user = data.user._json;
-      this.setState({
-        userName: user.email,
-        password: user.name,
-      });
-    } catch (err) {
-      console.log(err);
+  checkValidInput = () => {
+    let isValid = true;
+    let arrInput = ["userName", "password"];
+    for (let i = 0; i < arrInput.length; i++) {
+      if (!this.state[arrInput[i]]) {
+        isValid = false;
+        alert("Input required " + arrInput[i]);
+        break;
+      }
     }
-  }
-  handleOnChangeUserName = (event) => {
+    return isValid;
+  };
+  handleOnChangeInput = (event, id) => {
+    let copyState = { ...this.state };
+    copyState[id] = event.target.value;
     this.setState({
-      userName: event.target.value,
+      ...copyState,
     });
   };
-  handleOnChangePassword = (event) => {
+  handleLogin = async () => {
     this.setState({
-      password: event.target.value,
+      errMessage: "",
     });
-  };
-
-  handleShowHidePassword = () => {
-    this.setState({
-      isShowPassword: !this.state.isShowPassword,
-    });
+    try {
+      let isValid = this.checkValidInput();
+      if (isValid) {
+        let email = this.state.userName + "@hcmut.edu.vn";
+        let data = await handleLoginApi(email, this.state.password);
+        // console.log("data", data);
+        if (data && data.errCode !== 0) {
+          this.setState({
+            errMessage: data.message,
+          });
+        } else if (data && data.errCode === 0) {
+          //todo
+          this.props.userLoginSuccess(data.user);
+          if (data.role === "student") {
+            this.props.history.push(`/homepage-student`);
+          } else if (data.role === "lecturer") {
+            this.props.history.push(`/homepage-lecturer`);
+          }
+          //
+        }
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.data) {
+          this.setState({
+            errMessage: error.response.data.message,
+          });
+        }
+      }
+    }
   };
   handleKeyDown = (event) => {
     if (event.key === "Enter") {
       this.handleLogin();
     }
   };
-  handleAuth = (role) => {
-    window.open(
-      `${process.env.REACT_APP_API_URL}/auth/google?role=${role}`,
-      "_self"
-    );
-  };
-
+  componentDidMount() {}
   render() {
     return (
-      <>
-        <div className="home-background">
-          <div className="home-container">
-            <div className="home-content">
-              <div className="logoBK">
-                <img src={bk_logo} className="logobk"></img>
+      <React.Fragment>
+        <div className="login">
+          <div className="login-container">
+            <div className="login-header">
+              <img className="logo" src={bk_logo} />
+              <div className="login-header-content">
+                Central Authentication Service
               </div>
-              <div class="login-divider"></div>
-              <div className="login-iden">
-                <h2 class="login-heading">Log in for</h2>
-                <div
-                  className="btn btn-block login-with"
-                  onClick={() => this.handleAuth("student")}
-                >
-                  Student Of HCMUT
-                </div>
-                <div
-                  className="btn btn-block login-with"
-                  onClick={() => this.handleAuth("officer")}
-                >
-                  Smart Printing Officer
+            </div>
+            <div className="login-content">
+              <div className="login-content-left">
+                <div className="login-content-left-content">
+                  <div className="content1">
+                    Enter your Username and Password
+                  </div>
+                  <div className="content2">
+                    <div className="name">Username</div>
+                    <input
+                      className="input"
+                      value={this.state.userName}
+                      onChange={(event) =>
+                        this.handleOnChangeInput(event, "userName")
+                      }
+                      onKeyDown={(event) => this.handleKeyDown(event)}
+                    />
+                  </div>
+                  <div className="content2">
+                    <div className="name">Password</div>
+                    <input
+                      className="input"
+                      type="password"
+                      value={this.state.password}
+                      onChange={(event) =>
+                        this.handleOnChangeInput(event, "password")
+                      }
+                      onKeyDown={(event) => this.handleKeyDown(event)}
+                    />
+                  </div>
+                  <div className="content3">
+                    <input type="checkbox" />
+                    <div className="warn">
+                      Warn me before logging me into other sites.
+                    </div>
+                  </div>
+                  <div className="content4">
+                    <button
+                      to={path.HOMEPAGESTUDENT}
+                      type="button"
+                      className="button-login"
+                      onClick={() => this.handleLogin()}
+                    >
+                      Login
+                    </button>
+                    <button className="button-clear">Clear</button>
+                  </div>
+                  <div className="content5">Change Password?</div>
                 </div>
               </div>
-              <div class="login-divider"></div>
+              <div className="login-content-right">
+                <div className="content6">
+                  <div className="login-language">Languages</div>
+                  <div className="option-language">
+                    <div className="option">Vietnamese </div>
+                    <div className="option">English</div>
+                  </div>
+                </div>
+                <div className="content7">
+                  <div className="login-language">Please note</div>
+                  <div className="note-content">
+                    <p>
+                      The Login page enables single sign-on to multiple websites
+                      at HCMUT. This means that you only have to enter your user
+                      name and password once for websites that subscribe to the
+                      Login page.
+                    </p>
+                    <p>
+                      You will need to use your HCMUT Username and password to
+                      login to this site. The "HCMUT" account provides access to
+                      many resources including the HCMUT Information System,
+                      e-mail, ...
+                    </p>
+                    <p>
+                      For security reasons, please Exit your web browser when
+                      you are done accessing services that require
+                      authentication!
+                    </p>
+                  </div>
+                </div>
+                <div className="content8">
+                  <div className="login-language">Technical support</div>
+                  <div className="support">
+                    <div className="option1">E-mail: support@hcmut.edu.vn </div>
+                    <div className="option1">Tel: (84-8) 38647256 - 5200</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="login-footer">
+              Copyright © 2011 - 2012 Ho Chi Minh University of Technology. All
+              rights reserved. Powered by Jasig CAS 3.5.1
             </div>
           </div>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }
@@ -103,7 +199,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     // navigate: (path) => dispatch(push(path)),
     // // userLoginFail: () => dispatch(actions.adminLoginFail()),
-    // userLoginSuccess: (userInfor) => dispatch(userLoginSuccess(userInfor)),
+    userLoginSuccess: (userInfor) =>
+      dispatch(actions.userLoginSuccess(userInfor)),
   };
 };
 

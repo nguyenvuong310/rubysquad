@@ -2,9 +2,9 @@ const getConnection = require("../../Database/pool");
 const path = require("path");
 const fs = require("fs").promises;
 
-let createTable = async () => {
+let insertData = async () => {
   try {
-    const sqlFilePath = path.join(__dirname, "..", "sql", "createTable.sql");
+    const sqlFilePath = path.join(__dirname, "..", "sql", "insertData.sql");
 
     // Read the SQL file using fs.promises.readFile
     const fileContent = await fs.readFile(sqlFilePath, "utf8");
@@ -37,11 +37,11 @@ let createTable = async () => {
     // Release the connection back to the pool
     connection.release();
 
-    // console.log("create table successfully");
+    // console.log("insert data successfully");
   } catch (error) {
-    console.log("Error during SQL file import in createTable.js:", error);
-    throw new Error("Error during SQL file import in createTable.js:", error);
+    console.log("Error during SQL file import in insertdata.js");
+    throw new Error("Error during SQL file import insertdata.js:", error);
   }
 };
 
-module.exports = createTable;
+module.exports = insertData;

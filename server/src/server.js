@@ -3,8 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const initWebRoutes = require("./routes/web");
 const cookieSession = require("cookie-session");
+import viewEngine from "./config/viewEngine";
 
-import createTable from "./Database/function/createTable";
+import initializeDatabase from "./Database/initalizeDatabase";
 import bodyParser from "body-parser";
 const app = express();
 
@@ -29,8 +30,11 @@ app.use(
 // bodyParser giup lay data tu client to server
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+viewEngine(app);
 initWebRoutes(app);
-createTable();
+//database
+
+initializeDatabase();
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listenting on port ${port}...`));
